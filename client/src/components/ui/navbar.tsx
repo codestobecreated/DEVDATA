@@ -32,7 +32,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link href="/" className="text-xl font-heading font-bold tracking-tighter text-foreground hover:text-primary transition-colors">
-            PORTFOLIO<span className="text-primary">.</span>
+            <span className="text-primary">&lt;</span>DevData<span className="text-primary">&gt;</span>
         </Link>
 
         {/* Desktop Nav */}

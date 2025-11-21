@@ -44,11 +44,16 @@ export default function Experience() {
        </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex items-center gap-3 mb-12">
-          <div className="w-3 h-3 rounded-full bg-red-500" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500" />
-          <div className="w-3 h-3 rounded-full bg-green-500" />
-          <span className="ml-4 text-sm font-mono text-muted-foreground">~/portfolio/experience.log</span>
+        <div className="flex items-center gap-3 mb-12 border-b border-border pb-4">
+          <div className="flex gap-1.5">
+            <div className="w-3 h-3 rounded-full bg-destructive/80" />
+            <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+            <div className="w-3 h-3 rounded-full bg-green-500/80" />
+          </div>
+          <div className="ml-4 px-3 py-1 rounded-md bg-secondary/50 text-xs font-mono text-muted-foreground border border-border flex items-center gap-2">
+            <Terminal size={12} />
+            <span>user@devdata:~/career_history</span>
+          </div>
         </div>
 
         <div className="space-y-8 font-mono">
