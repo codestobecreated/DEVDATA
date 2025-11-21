@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Database, Code2 } from "lucide-react";
+import { ArrowRight, Github, Linkedin } from "lucide-react";
 import heroBg from "@assets/generated_images/abstract_dark_data_visualization_background.png";
 
 export default function Hero() {
