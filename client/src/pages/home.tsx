@@ -1,5 +1,6 @@
 import Navbar from "@/components/ui/navbar";
 import Hero from "@/components/hero";
+import About from "@/components/about";
 import Skills from "@/components/skills";
 import Experience from "@/components/experience";
 import Projects from "@/components/projects";
@@ -11,9 +12,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
-        <div id="about">
-          {/* About content can be integrated into Hero or separate, keeping it clean for now */}
-        </div>
+        <About />
         <Skills />
         <Experience />
         <Projects />
