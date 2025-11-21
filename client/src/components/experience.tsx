@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Terminal, ChevronRight } from "lucide-react";
+import { Calendar, Building2, ArrowUpRight } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 const experience = [
   {
@@ -7,121 +8,138 @@ const experience = [
     role: "Junior Data Scientist & Developer",
     company: "Tech Innovators Inc.",
     period: "2024 - Present",
-    description: "Working on end-to-end data solutions. Built a predictive maintenance dashboard using React and Python backend. Optimized SQL queries reducing report generation time by 40%.",
+    description: "Spearheaded end-to-end data solutions, bridging the gap between raw data and actionable insights. Architected a predictive maintenance dashboard using React and Python, directly impacting operational efficiency.",
+    achievements: [
+        "Reduced report generation time by 40% via SQL optimization",
+        "Built real-time visualization dashboards",
+        "Integrated ML models into production web apps"
+    ],
     type: "work",
-    tech: ["Python", "React", "SQL"]
+    tech: ["Python", "React", "SQL", "TensorFlow"]
   },
   {
     id: "exp_02",
     role: "Full Stack Development Intern",
     company: "Creative Solutions",
     period: "2023 - 2024",
-    description: "Assisted in developing a CRM system. Implemented responsive UI components with React and Tailwind. Integrated RESTful APIs for user management.",
+    description: "Collaborated on a high-traffic CRM system, focusing on frontend performance and API integration. Championed mobile-first design principles.",
+    achievements: [
+        "Implemented responsive UI components",
+        "Integrated RESTful APIs for user management",
+        " improved page load speeds by 25%"
+    ],
     type: "work",
-    tech: ["React", "Tailwind", "REST"]
+    tech: ["React", "Tailwind", "REST", "Git"]
   },
   {
     id: "edu_01",
     role: "B.Sc. Computer Science",
     company: "University of Technology",
     period: "2019 - 2023",
-    description: "Specialized in Artificial Intelligence and Web Technologies. Capstone project: 'Real-time Sentiment Analysis of Social Media Streams'.",
+    description: "Specialized in Artificial Intelligence and Web Technologies. Graduated with honors.",
+    achievements: [
+        "Capstone: 'Real-time Sentiment Analysis'",
+        "Dean's List: 2021, 2022",
+        "Lead Developer: University Tech Club"
+    ],
     type: "education",
-    tech: ["AI", "Web", "Algorithms"]
+    tech: ["AI", "Web Architecture", "Algorithms"]
   }
 ];
 
 export default function Experience() {
   return (
     <section id="experience" className="py-24 bg-background relative overflow-hidden">
-       {/* Matrix-like background effect */}
-       <div className="absolute inset-0 opacity-[0.03] pointer-events-none overflow-hidden font-mono text-xs leading-none select-none">
-         {Array.from({ length: 100 }).map((_, i) => (
-           <div key={i} className="whitespace-nowrap">
-             {Array.from({ length: 100 }).map(() => Math.random() > 0.5 ? '1' : '0').join('')}
-           </div>
-         ))}
-       </div>
+      {/* Background Gradients */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -z-10" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px] -z-10" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex items-center gap-3 mb-12 border-b border-border pb-4">
-          <div className="flex gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-destructive/80" />
-            <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-            <div className="w-3 h-3 rounded-full bg-green-500/80" />
-          </div>
-          <div className="ml-4 px-3 py-1 rounded-md bg-secondary/50 text-xs font-mono text-muted-foreground border border-border flex items-center gap-2">
-            <Terminal size={12} />
-            <span>user@devdata:~/career_history</span>
-          </div>
+      <div className="container mx-auto px-6">
+        <div className="mb-16">
+          <motion.span 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-primary font-mono text-sm tracking-wider uppercase mb-2 block"
+          >
+            Career Path
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl md:text-5xl font-heading font-bold"
+          >
+            Experience & Education
+          </motion.h2>
         </div>
 
-        <div className="space-y-8 font-mono">
+        <div className="space-y-8">
           {experience.map((item, index) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="border-l-2 border-border pl-6 hover:border-primary transition-colors duration-300 group"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group relative"
             >
-              {/* Command Line Header */}
-              <div className="flex flex-wrap items-center gap-2 text-sm md:text-base mb-3 opacity-80">
-                <span className="text-primary">➜</span>
-                <span className="text-accent">~</span>
-                <span className="text-muted-foreground">cat</span>
-                <span className="text-foreground font-bold">{item.id}.json</span>
-                <span className="text-muted-foreground ml-auto text-xs border border-border px-2 py-0.5 rounded bg-card/50">
-                    {item.period}
-                </span>
-              </div>
-
-              {/* Output Block */}
-              <div className="bg-card/30 rounded-lg p-5 md:p-6 border border-border group-hover:border-primary/30 transition-all relative overflow-hidden">
-                {/* Scanline effect */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-0 bg-[length:100%_4px,3px_100%] pointer-events-none opacity-20" />
-                
-                <div className="relative z-10 grid gap-2 text-sm md:text-base">
-                   <div className="grid grid-cols-[80px_1fr] md:grid-cols-[100px_1fr] gap-2">
-                        <span className="text-primary opacity-70">"role":</span>
-                        <span className="text-foreground font-bold">"{item.role}"</span>
-                   </div>
-                   <div className="grid grid-cols-[80px_1fr] md:grid-cols-[100px_1fr] gap-2">
-                        <span className="text-primary opacity-70">"at":</span>
-                        <span className="text-accent">"{item.company}"</span>
-                   </div>
-                   <div className="grid grid-cols-[80px_1fr] md:grid-cols-[100px_1fr] gap-2">
-                        <span className="text-primary opacity-70">"desc":</span>
-                        <span className="text-muted-foreground">"{item.description}"</span>
-                   </div>
-                   <div className="grid grid-cols-[80px_1fr] md:grid-cols-[100px_1fr] gap-2 items-start">
-                        <span className="text-primary opacity-70">"stack":</span>
-                        <div className="text-secondary-foreground">
-                            [
-                            {item.tech.map((t, i) => (
-                                <span key={t} className="text-green-400">
-                                    "{t}"{i < item.tech.length - 1 ? ", " : ""}
-                                </span>
-                            ))}
-                            ]
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl -z-10 blur-xl" />
+              
+              <div className="bg-card border border-border p-6 md:p-8 rounded-2xl transition-all duration-300 group-hover:border-primary/30 group-hover:translate-x-2">
+                <div className="flex flex-col md:flex-row gap-6 md:gap-10">
+                  
+                  {/* Left Column: Time & Company */}
+                  <div className="md:w-1/4 flex-shrink-0 flex flex-col justify-between">
+                    <div>
+                        <span className="inline-block px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-xs font-bold mb-3">
+                            {item.period}
+                        </span>
+                        <div className="flex items-center gap-2 text-muted-foreground font-medium">
+                            <Building2 size={16} />
+                            {item.company}
                         </div>
-                   </div>
+                    </div>
+                    <div className="hidden md:block mt-4">
+                        <div className={`w-1 h-12 rounded-full bg-gradient-to-b ${item.type === 'work' ? 'from-primary to-transparent' : 'from-accent to-transparent'}`} />
+                    </div>
+                  </div>
+
+                  {/* Right Column: Role & Details */}
+                  <div className="md:w-3/4">
+                    <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors flex items-center gap-2">
+                        {item.role}
+                        <ArrowUpRight className="opacity-0 group-hover:opacity-100 transition-opacity w-5 h-5 text-muted-foreground" />
+                    </h3>
+                    
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                        {item.description}
+                    </p>
+
+                    {/* Achievements List */}
+                    <ul className="space-y-2 mb-6">
+                        {item.achievements.map((achievement, i) => (
+                            <li key={i} className="flex items-start gap-2 text-sm text-foreground/80">
+                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                                {achievement}
+                            </li>
+                        ))}
+                    </ul>
+
+                    {/* Tech Stack */}
+                    <div className="flex flex-wrap gap-2">
+                        {item.tech.map((tech) => (
+                            <Badge key={tech} variant="secondary" className="bg-secondary/50 hover:bg-secondary text-muted-foreground font-mono font-normal">
+                                {tech}
+                            </Badge>
+                        ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
           ))}
-          
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="flex items-center gap-2 text-primary pl-6 pt-4"
-          >
-             <span>➜</span>
-             <span>~</span>
-             <span className="animate-pulse bg-primary w-2.5 h-5 block" />
-          </motion.div>
         </div>
       </div>
     </section>
