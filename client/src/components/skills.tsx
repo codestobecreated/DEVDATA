@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Code2, Database, Brain, Layout, Server, Terminal } from "lucide-react";
+import { Code2, Database, Brain, Layout, Server, Terminal, BarChart } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const skillCategories = [
@@ -7,22 +7,62 @@ const skillCategories = [
     title: "Data Science & ML",
     icon: <Brain className="w-6 h-6 text-primary" />,
     skills: [
-      { name: "Python", level: 95 },
-      { name: "TensorFlow / PyTorch", level: 85 },
-      { name: "Pandas & NumPy", level: 90 },
-      { name: "SQL & NoSQL", level: 88 },
-      { name: "Data Visualization", level: 82 },
+      { 
+        name: "Python", 
+        level: 95, 
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" 
+      },
+      { 
+        name: "TensorFlow", 
+        level: 85, 
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg" 
+      },
+      { 
+        name: "Pandas", 
+        level: 90, 
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg" 
+      },
+      { 
+        name: "SQL", 
+        level: 88, 
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" 
+      },
+      { 
+        name: "Data Viz", 
+        level: 82, 
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matplotlib/matplotlib-original.svg"
+      },
     ]
   },
   {
     title: "Full Stack Dev",
     icon: <Layout className="w-6 h-6 text-accent" />,
     skills: [
-      { name: "React & TypeScript", level: 90 },
-      { name: "Node.js", level: 85 },
-      { name: "Tailwind CSS", level: 95 },
-      { name: "PostgreSQL", level: 80 },
-      { name: "REST & GraphQL", level: 85 },
+      { 
+        name: "React", 
+        level: 90, 
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" 
+      },
+      { 
+        name: "Node.js", 
+        level: 85, 
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" 
+      },
+      { 
+        name: "Tailwind", 
+        level: 95, 
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" 
+      },
+      { 
+        name: "PostgreSQL", 
+        level: 80, 
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" 
+      },
+      { 
+        name: "GraphQL", 
+        level: 85, 
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg" 
+      },
     ]
   }
 ];
@@ -90,10 +130,20 @@ export default function Skills() {
               <div className="space-y-6">
                 {category.skills.map((skill, index) => (
                   <motion.div key={skill.name} variants={item} className="group">
-                    <div className="flex justify-between mb-2">
-                      <span className="font-medium group-hover:text-primary transition-colors duration-300">
-                        {skill.name}
-                      </span>
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-3">
+                         {/* Icon with grayscale filter that is removed on hover */}
+                        <div className="w-6 h-6 relative flex items-center justify-center">
+                            <img 
+                                src={skill.icon} 
+                                alt={skill.name} 
+                                className="w-full h-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                            />
+                        </div>
+                        <span className="font-medium group-hover:text-primary transition-colors duration-300">
+                          {skill.name}
+                        </span>
+                      </div>
                       <span className="text-muted-foreground text-sm">{skill.level}%</span>
                     </div>
                     <div className="h-2 w-full bg-secondary/50 rounded-full overflow-hidden">
