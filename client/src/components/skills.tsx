@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { Code2, Database, Brain, Layout, Server, Terminal, BarChart } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Brain, Layout } from "lucide-react";
 
 const skillCategories = [
   {
     title: "Data Science & ML",
     icon: <Brain className="w-6 h-6 text-primary" />,
+    color: "bg-primary",
     skills: [
       { 
         name: "Python", 
@@ -37,6 +37,7 @@ const skillCategories = [
   {
     title: "Full Stack Dev",
     icon: <Layout className="w-6 h-6 text-accent" />,
+    color: "bg-accent",
     skills: [
       { 
         name: "React", 
@@ -78,8 +79,8 @@ const container = {
 };
 
 const item = {
-  hidden: { opacity: 0, x: -20 },
-  show: { opacity: 1, x: 0 }
+  hidden: { opacity: 0, scale: 0.9 },
+  show: { opacity: 1, scale: 1 }
 };
 
 export default function Skills() {
@@ -90,7 +91,7 @@ export default function Skills() {
       <div className="absolute bottom-0 -right-20 w-96 h-96 bg-accent/5 rounded-full blur-3xl -z-10" />
 
       <div className="container mx-auto px-6">
-        <div className="mb-16 text-center">
+        <div className="mb-20 text-center">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -110,7 +111,7 @@ export default function Skills() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {skillCategories.map((category, idx) => (
             <motion.div
               key={category.title}
@@ -118,42 +119,44 @@ export default function Skills() {
               whileInView="show"
               viewport={{ once: true }}
               variants={container}
-              className="space-y-6"
             >
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex items-center gap-3 mb-8">
                 <div className="p-3 rounded-lg bg-card border border-border shadow-sm">
                   {category.icon}
                 </div>
                 <h3 className="text-2xl font-bold">{category.title}</h3>
               </div>
 
-              <div className="space-y-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {category.skills.map((skill, index) => (
-                  <motion.div key={skill.name} variants={item} className="group">
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center gap-3">
-                         {/* Icon with grayscale filter that is removed on hover */}
-                        <div className="w-6 h-6 relative flex items-center justify-center">
-                            <img 
-                                src={skill.icon} 
-                                alt={skill.name} 
-                                className="w-full h-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
-                            />
-                        </div>
-                        <span className="font-medium group-hover:text-primary transition-colors duration-300">
-                          {skill.name}
-                        </span>
-                      </div>
-                      <span className="text-muted-foreground text-sm">{skill.level}%</span>
+                  <motion.div 
+                    key={skill.name} 
+                    variants={item} 
+                    className="group relative bg-card/50 backdrop-blur-sm border border-border hover:border-primary/50 rounded-xl p-6 flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                  >
+                    {/* Icon Container */}
+                    <div className="w-12 h-12 relative flex items-center justify-center">
+                        <img 
+                            src={skill.icon} 
+                            alt={skill.name} 
+                            className="w-full h-full object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110"
+                        />
                     </div>
-                    <div className="h-2 w-full bg-secondary/50 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.2 + (index * 0.1), ease: "easeOut" }}
-                        className={`h-full rounded-full ${idx === 0 ? 'bg-primary' : 'bg-accent'}`}
-                      />
+                    
+                    {/* Text Info */}
+                    <div className="text-center w-full">
+                      <span className="font-heading font-medium text-foreground block mb-2">{skill.name}</span>
+                      
+                      {/* Mini Progress Bar */}
+                      <div className="w-full h-1 bg-secondary rounded-full overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1, delay: 0.2 + (index * 0.1), ease: "easeOut" }}
+                          className={`h-full rounded-full ${idx === 0 ? 'bg-primary' : 'bg-accent'}`}
+                        />
+                      </div>
                     </div>
                   </motion.div>
                 ))}
@@ -162,24 +165,21 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Floating Tech Badges - Extra visual interest */}
+        {/* Floating Tech Badges - Bottom */}
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5, duration: 1 }}
-          className="mt-20 flex flex-wrap justify-center gap-4 opacity-70"
+          className="mt-20 flex flex-wrap justify-center gap-4 opacity-50"
         >
           {["Git", "Docker", "AWS", "Linux", "Jira", "Figma", "Agile", "CI/CD"].map((tool, i) => (
-            <motion.div
+            <span
               key={tool}
-              whileHover={{ scale: 1.1, color: "hsl(var(--foreground))", opacity: 1 }}
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }}
-              className="px-4 py-2 rounded-full border border-border bg-card/50 text-muted-foreground text-sm font-mono cursor-default"
+              className="px-3 py-1 rounded-full border border-border text-xs font-mono"
             >
               {tool}
-            </motion.div>
+            </span>
           ))}
         </motion.div>
       </div>
