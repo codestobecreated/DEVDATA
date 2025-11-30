@@ -3,31 +3,61 @@ import { motion } from "framer-motion";
 const experience = [
   {
     id: "exp_01",
-    role: "Junior Data Scientist & Developer",
-    company: "Tech Innovators Inc.",
-    period: "2024 - Present",
-    description: "Spearheaded end-to-end data solutions, bridging the gap between raw data and actionable insights. Architected a predictive maintenance dashboard using React and Python, directly impacting operational efficiency.",
+    role: "Full Stack Development Intern",
+    company: "Creative Solutions",
+    period: "AUG 2025 - Present",
+    description:
+      "Full-Stack Developer – Built & optimized high-traffic CRM\n\n• Improved page load speed by 25% and made it fully mobile-first using React + API integration\n• Focused on fast, mobile-friendly frontend with smooth API connection\n• Achieved 25% faster loading through clean React code and better API integration",
     type: "work",
-    tags: ["Python", "React", "SQL"]
+    tags: [
+      "React",
+      "Tailwind",
+      "REST",
+      "APIs",
+      "JavaScript",
+      "Git",
+      "Django",
+      "PostgreSQL",
+      "Docker",
+      "UI/UX",
+      "Testing",
+      "Performance Optimization",
+    ],
   },
   {
     id: "exp_02",
-    role: "Full Stack Development Intern",
-    company: "Creative Solutions",
-    period: "2023 - 2024",
-    description: "Collaborated on a high-traffic CRM system, focusing on frontend performance and API integration. Championed mobile-first design principles and improved page load speeds by 25%.",
+    role: "Data Scientist Intern",
+    company: "Gradtwin Company - Chennai, Tamil Nadu",
+    period: "July 2024 - July 2025",
+    description:
+      "Data Scientist Intern (1 year) → Gradtwin, Chennai\n\nSingle-handedly owned and shipped the company's first production AI product:\n• Built predictive maintenance system (XGBoost + LSTM) achieving 94% accuracy on industrial sensor data\n• Productionized model with FastAPI + Redis (real-time inference < 80ms)\n• Designed & deployed interactive dashboard using Next.js 14, Tailwind, and Recharts\n• Reduced unplanned machine downtime by 37% → direct ₹40L+ annual savings\n• Scaled system to handle 50K+ daily predictions using Docker + cloud deployment",
     type: "work",
-    tags: ["React", "Tailwind", "REST"]
+    tags: [
+      "Python",
+      "FastAPI",
+      "XGBoost",
+      "Data structures",
+      "Django",
+      "Github",
+    ],
   },
   {
-    id: "edu_01",
-    role: "B.Sc. Computer Science",
-    company: "University of Technology",
-    period: "2019 - 2023",
-    description: "Specialized in Artificial Intelligence and Web Technologies. Graduated with honors. Capstone project focused on Real-time Sentiment Analysis.",
+    id: "edu_03",
+    role: "B.Tech. Artificial Intelligence & Data Science",
+    company: "Anna University",
+    period: "2020 - 2024",
+    description:
+      "Specialized in Artificial Intelligence and Web Technologies. Graduated with honors. Capstone project focused on Real-time Sentiment Analysis.",
     type: "education",
-    tags: ["AI", "Algorithms", "Web Arch"]
-  }
+    tags: [
+      "AI",
+      "Data Science",
+      "Data Analysis",
+      "Python",
+      "Web Development",
+      "Data Structurese and Algorithms",
+    ],
+  },
 ];
 
 export default function Experience() {
@@ -35,11 +65,10 @@ export default function Experience() {
     <section id="experience" className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row gap-16 lg:gap-24">
-          
           {/* Sticky Header */}
           <div className="md:w-1/3">
             <div className="sticky top-24">
-              <motion.h2 
+              <motion.h2
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
@@ -47,17 +76,18 @@ export default function Experience() {
               >
                 Experience
               </motion.h2>
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
                 className="text-muted-foreground text-lg leading-relaxed"
               >
-                My professional journey is defined by a constant drive to learn and build. From academic foundations to real-world shipping.
+                My professional journey is defined by a constant drive to learn
+                and build. From academic foundations to real-world shipping.
               </motion.p>
-              
-              <motion.div 
+
+              <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -99,9 +129,9 @@ export default function Experience() {
                   </p>
 
                   <div className="flex flex-wrap gap-3">
-                    {item.tags.map(tag => (
-                      <span 
-                        key={tag} 
+                    {item.tags.map((tag) => (
+                      <span
+                        key={tag}
                         className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border border-border text-muted-foreground group-hover:border-primary/50 group-hover:text-primary transition-colors"
                       >
                         {tag}

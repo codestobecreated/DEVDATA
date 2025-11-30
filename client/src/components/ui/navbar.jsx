@@ -49,7 +49,9 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="https://wa.me/8610906298"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm font-bold hover:bg-primary/90 transition-colors"
           >
             Let's Talk
